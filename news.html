@@ -6,7 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <link rel="stylesheet" href="./styles/main.css">
+  <style>
+    #container{
+      display: flex;
+    }
+    #sidebar{
+      flex: 3;
+    }
+    #main{
+      flex: 7;
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
 
   <body>
     <!--DO NOT CHANGE THIS ID's-->
@@ -43,13 +55,13 @@
      let title = document.createElement('h3');
      title = data.title;
      let date = document.createElement('p');
-     date = data.publishedAt
+     date = ` PublishedAt:-${data.publishedAt}`;
      let description = document.createElement('h6');
-     description = data.description
+     description = data.description;
      let image = document.createElement('img');
-     image.src = data.urlToImage
+     image.src = data.urlToImage;
      let content = document.createElement('p');
-     content = `${data.content}`;
+     content = data.content;
      main.append(title,date,image,description,content);
    }
   
