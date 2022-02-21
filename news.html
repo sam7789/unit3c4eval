@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="./styles/main.css">
+
+  <body>
+    <!--DO NOT CHANGE THIS ID's-->
+
+    <div id="container">
+      <div id="sidebar">
+        <!--add your sidebar component here-->
+      </div>
+
+      <div id="main">
+        <!--DO NOT CHANGE THIS ID's-->
+        <!--Show the clicked article in detailed format here ONLY-->
+      </div>
+    </div>
+  </body>
+</html>
+<script type="module">
+  import sidebar from './components/sidebar.js'
+  import storeSearchterm from './scripts/search.js'
+  const sidebarc = document.getElementById('sidebar');
+  const mainc = document.getElementById('main');
+  sidebarc.innerHTML = sidebar();
+  let search = document.getElementById('searchbar');
+   search.addEventListener('keypress', (event)=>{
+     if(event.keyCode == 13){
+       let searchvalue = document.getElementById('searchbar').value;
+       storeSearchterm(searchvalue);
+       window.location.href = "search.html";
+     }
+   });
+
+   let appendarticle = (data, main)=>{
+     main.innerHTML = null;
+     let title = document.createElement('');
+     title = data.title;
+     let date = document.createElement('p');
+     date = data.publishedAt
+     let description = document.createElement('h6');
+     description = data.description
+     let image = document.createElement('img');
+     image.src = data.urlToImage
+     let content = document.createElement('p');
+     content = `${data.content}`;
+     main.append(title,date,image,description,content);
+   }
+  
+   let data = JSON.parse(localStorage.getItem('article'));
+   appendarticle(data,mainc);
+
+   /*
+   author: null
+content: "Justin Langer had been seeking a contract extension\r\nJustin Langer has resigned as coach of the Australia men's cricket team.\r\nThe 51-year-old's contract was going to expire at the end of June and he… [+880 chars]"
+description: "Justin Langer resigns as coach of the Australia men's cricket team, ending months of speculation as to whether he would continue in the role."
+publishedAt: "2022-02-05T01:11:57Z"
+source: {id: "bbc-news", name: "BBC News"}
+title: "Australian Cricket: Coach Justin Langer resigns as coach"
+url: "https://www.bbc.co.uk/sport/cricket/60269322"
+urlToImage: "https://ichef.bbci.co.uk/live-experience/cps/624/cpsprodpb/AF22/production/_123143844_langer1.jpg"
+*/
+
+   
+
+
+</script>
