@@ -1,0 +1,23 @@
+#container{
+    display: flex;
+}
+#sidebar{
+    flex : 3;
+}
+#main{
+    flex: 7;
+    flex-wrap: wrap;
+}
+#news{
+    display: flex;
+    justify-content: space-around;
+}
+#news > img{
+    width: 30%;
+}
+#news > h4{
+    width: 30%;
+}
+#news > p{
+    width: 30%;
+}
